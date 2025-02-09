@@ -7,7 +7,7 @@ const Compass = ({ }) => {
                 position: "absolute",
                 top: "10px",
                 left: "10px",
-                backgroundColor: "white",
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
                 padding: "10px",
                 borderRadius: "50%",
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
@@ -19,7 +19,6 @@ const Compass = ({ }) => {
         >
             <div
                 style={{
-                    // transform: `rotate(${rotation}rad)`,
                     transition: "transform 0.2s ease",
                 }}
             >
