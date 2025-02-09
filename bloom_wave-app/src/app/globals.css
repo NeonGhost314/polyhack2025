@@ -27,6 +27,25 @@ body {
   left: auto;
   right: 8px;
 }
+
+
+.ol-scale-bar{
+
+  right: 100px !important; /* Position from right */
+  left: auto !important; /* Override default left positioning */
+  top : 1270px
+}
+
+.ol-scale-bar-inner {
+  display: flex;
+  align-items: center;
+}
+
+.ol-scale-text {
+  position: relative;
+  font-size: 12px; /* Adjust if needed */
+  text-align: center;
+}
 /* @font-face {
   font-family: 'WavyFont';
   src: url('/fonts/WavyFont.woff2') format('woff2'),
