@@ -14,7 +14,6 @@ import { Style, Icon, Fill, Stroke } from "ol/style";
 import { defaults as defaultControls, Zoom } from "ol/control";
 import Graticule from "ol/layer/Graticule"; // Import the Graticule layer
 import { ScaleLine } from "ol/control";
-
 import "ol/ol.css";
 
 const OpenLayersMap = () => {
@@ -37,7 +36,6 @@ const OpenLayersMap = () => {
       steps: 4, // Number of bar divisions
       text: true, // Show text labels
       minWidth: 100, // Minimum width of the scale bar
-      //className: "custom-scale-line", // Custom class for styling
     });
 
     // Create the map
@@ -68,11 +66,13 @@ const OpenLayersMap = () => {
         zoom: 2,
         rotation: rotation, // Set initial rotation
       }),
-      controls: defaultControls({ attribution: false , zoom: false }).extend([zoomControls,scaleLineControl]), // Use custom zoom controls
+      controls: defaultControls({ attribution: false, zoom: false }).extend([
+        zoomControls,
+        scaleLineControl,
+      ]), // Use custom zoom controls
     });
 
-
-  map.addControl(scaleLineControl);
+    map.addControl(scaleLineControl);
 
     // Listen for map rotation changes
     map.getView().on("change:rotation", () => {
@@ -207,16 +207,70 @@ const OpenLayersMap = () => {
           zIndex: 1, // Ensure the legend is above the map
         }}
       >
-        <h3 style={{ margin: "0 0 10px 0", fontSize: "16px" ,color: "black"}}>Legend</h3>
+        <h3 style={{ margin: "0 0 10px 0", fontSize: "16px", color: "black" }}>Legend</h3>
         <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
           <img
             src="https://openlayers.org/en/latest/examples/data/icon.png"
             alt="Marker Icon"
             style={{ width: "20px", height: "20px", marginRight: "5px" }}
           />
-          <span style={{color: "black"}}>Marker </span>
+          <span style={{ color: "black" }}>Marker </span>
         </div>
         {/* Add more legend items as needed */}
+      </div>
+
+      {/* Toolbar Container */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "50%",
+          transform: "translateX(-50%)", // Center the toolbar horizontally
+          backgroundColor: "white",
+          padding: "10px",
+          borderRadius: "5px",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          zIndex: 1, // Ensure the toolbar is above the map
+          display: "flex",
+          gap: "10px", // Space between buttons
+        }}
+      >
+        <button
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#007bff",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          Button 1
+        </button>
+        <button
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#28a745",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          Button 2
+        </button>
+        <button
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#dc3545",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          Button 3
+        </button>
       </div>
     </div>
   );
