@@ -1,8 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const pollutionSchema = mongoose.Schema({
-  severity: string,
-  size: number
+const pollutionSchema = new mongoose.Schema({
+  severity: { type: String, required: true },
+  size: { type: Number,required: true},
 });
 
-export default mongoose.model('Pollution', pollutionSchema);
+const Pollution = mongoose.model("Pollution", pollutionSchema);
+
+export default Pollution;

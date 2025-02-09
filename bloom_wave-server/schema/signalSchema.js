@@ -1,18 +1,18 @@
 import mongoose from 'mongoose';
-import {courantSchema} from './courantSchema.js';
-import {pollutionSchemaSchema} from './pollutionSchemaSchema.ts';
-import {fishSchemaSchema} from './fishSchemaSchema.ts';
+import Courant from "../schema/courantSchema.js";
+import Pollution from '../schema/pollutionSchema.js';
+import Fish from '../schema/fishSchema.js';
 
 const Type = Object.freeze({
-    Fish:   fishSchemaSchema,
-    Courant:  courantSchema,
-    Pollution: pollutionSchemaSchema
+    fish: Fish,
+    courant: Courant,
+    pollution:Pollution
   });
-const pollutionSchema = mongoose.Schema({
-  severity: string,
-  coordinate:[[]],
-  size: number,
-  type:Type
+const signalSchema = mongoose.Schema({
+  coordinate:{type:[[]],required:true},
+  size: {type:Number,required:true},
+  type: { type: String, enum: Object.values(Type), required: true },
+  reference: { type: mongoose.Schema.Types.ObjectId, refPath: "type" },
 });
 
-export default mongoose.model('Pollution', pollutionSchema);
+export default mongoose.model('Signal', signalSchema);

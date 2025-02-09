@@ -1,8 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const fishSchema = mongoose.Schema({
-  severity: String,
-  size: Number
+const fishSchema = new mongoose.Schema({
+  severity: { type: String, required: true },
+  size: { type: Number,required: true},
 });
 
-export default mongoose.model('Fish', fishSchema);
+const Fish = mongoose.model("Fish", fishSchema);
+
+export default Fish;

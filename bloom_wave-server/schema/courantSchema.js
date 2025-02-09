@@ -1,8 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const courantSchema = mongoose.Schema({
-  severity: String,
-  size: Number
+const courantSchema = new mongoose.Schema({
+  severity: { type: String, required: true },
+  size: { type: Number,required: true},
 });
 
-export default mongoose.model('Fish', courantSchema);
+const Courant = mongoose.model("Courant", courantSchema);
+
+export default Courant;
