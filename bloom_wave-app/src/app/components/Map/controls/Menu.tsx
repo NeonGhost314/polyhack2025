@@ -16,7 +16,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onToggle }) => {
       router.push("/");
     } else if (option === "Log out") {
       router.push("/profile");
-    } else if (option === "Profile") { // a changer
+    } else if (option === "Support") { // a changer
       router.push("/contact");
     }
   };
@@ -71,7 +71,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onToggle }) => {
           >
             Options
           </p>
-          {["Home", "Profile", "Log out"].map((option, index) => (
+          {["Home", "Support", "Log out"].map((option, index) => (
             <button
               key={index}
               onClick={() => handleOptionClick(option)}
