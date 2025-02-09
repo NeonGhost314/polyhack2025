@@ -61,7 +61,7 @@ const OpenLayersMap = () => {
             width: 1, // Line width
           }),
           showLabels: true, // Show labels for meridians and parallels
-          intervals: [10], // Interval between grid lines (in degrees)
+          intervals: [1000/111000], // Interval between grid lines (in degrees)
         }),
       ],
       view: new View({
@@ -133,7 +133,7 @@ const OpenLayersMap = () => {
 
       // Create a circle geometry around the coordinates
       const radiusFeature = new Feature({
-        geometry: new Circle(coordinates, 100000), // Radius in meters (100 km)
+        geometry: new Circle(coordinates, 1000), // Radius in meters (100 km)
       });
 
       // Style the radius
