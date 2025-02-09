@@ -228,7 +228,7 @@ const OpenLayersMap = () => {
             alt="Marker Icon"
             style={{ width: "20px", height: "20px", marginRight: "5px" }}
           />
-          <span style={{ color: "black" }}>Marker2 </span>
+          <span style={{ color: "black" }}>Pollution </span>
           
         </div>
         <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
@@ -291,6 +291,7 @@ const OpenLayersMap = () => {
             border: "none",
             borderRadius: "4px",
             cursor: "pointer",
+            height: "10vh"
           }}
         >
           Button 3

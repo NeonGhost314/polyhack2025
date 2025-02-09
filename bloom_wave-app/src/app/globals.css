@@ -33,7 +33,7 @@ body {
 
   right: 100px !important; /* Position from right */
   left: auto !important; /* Override default left positioning */
-  top : 1270px
+  bottom: 1vh;
 }
 
 .ol-scale-bar-inner {
