@@ -1,6 +1,5 @@
-// Import the framework and instantiate it
 import Fastify from 'fastify'
-import routes from './routes/routes.js'; // Import your routes
+import routes from './routes/routes.js';
 import fastifyMongo from "@fastify/mongodb";
 import dotenv from "dotenv";
 

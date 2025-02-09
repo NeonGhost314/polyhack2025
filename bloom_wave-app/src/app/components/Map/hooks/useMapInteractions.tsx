@@ -71,6 +71,7 @@ export const useMapInteractions = ({
     const handleClick = (event: any) => {
       if (isMarkerMode) {
         addMarker(event.coordinate, vectorSource);
+        console.log(event.coordinate);
       }
     };
 
