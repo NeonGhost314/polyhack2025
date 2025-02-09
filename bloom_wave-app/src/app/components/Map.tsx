@@ -13,6 +13,8 @@ import { Vector as VectorSource } from "ol/source";
 import { Style, Icon, Fill, Stroke } from "ol/style";
 import { defaults as defaultControls, Zoom } from "ol/control";
 import Graticule from "ol/layer/Graticule"; // Import the Graticule layer
+import { ScaleLine } from "ol/control";
+
 import "ol/ol.css";
 
 const OpenLayersMap = () => {
@@ -27,6 +29,15 @@ const OpenLayersMap = () => {
     // Create custom zoom controls positioned at the bottom-right
     const zoomControls = new Zoom({
       className: "ol-zoom-bottom-right", // Custom class for styling
+    });
+
+    const scaleLineControl = new ScaleLine({
+      units: "metric", // Display in meters/kilometers
+      bar: true, // Show a bar scale
+      steps: 4, // Number of bar divisions
+      text: true, // Show text labels
+      minWidth: 100, // Minimum width of the scale bar
+      //className: "custom-scale-line", // Custom class for styling
     });
 
     // Create the map
@@ -57,8 +68,11 @@ const OpenLayersMap = () => {
         zoom: 2,
         rotation: rotation, // Set initial rotation
       }),
-      controls: defaultControls({ zoom: false }).extend([zoomControls]), // Use custom zoom controls
+      controls: defaultControls({ attribution: false , zoom: false }).extend([zoomControls,scaleLineControl]), // Use custom zoom controls
     });
+
+
+  map.addControl(scaleLineControl);
 
     // Listen for map rotation changes
     map.getView().on("change:rotation", () => {
