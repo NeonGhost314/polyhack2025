@@ -13,10 +13,18 @@ export default function HomePage() {
           height={50}
         />
       </div>
+      <div className="absolute top-0 right-20 m-6 z-40">
+        <Image
+          src="/note.png"
+          alt="contact logo"
+          width={40}
+          height={40}
+        />
+      </div>
       <div className="absolute top-0 left-20 m-8 z-40">
         <a href="/profile" className="text-white font-bold hover:underline">Profile</a>
       </div>
-      <div className="absolute top-0 right-5 m-8 z-40">
+      <div className="absolute top-0 right-0 m-8 z-40">
         <a href="/contact" className="text-white font-bold hover:underline">Contact Us</a>
       </div>
 

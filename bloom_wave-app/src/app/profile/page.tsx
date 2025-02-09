@@ -16,7 +16,7 @@ export default function ContactPage() {
         <div className="absolute top-0 left-20 m-8 z-40">
             <a href="/main" className="text-white font-bold hover:underline">Home</a>
         </div>
-        <div className="absolute top-0 right-5 m-8 z-40">
+        <div className="absolute top-0 right-0 m-8 z-40">
             <a href="/contact" className="text-white font-bold hover:underline">Contact Us</a>
         </div>
         <div className="absolute inset-0 bg-black opacity-20 z-10"></div>
@@ -28,10 +28,10 @@ export default function ContactPage() {
                   height={40}
                 />
             </div>
-            <div className="absolute top-0 right-9 m-7 z-40">
+            <div className="absolute top-0 right-20 m-6 z-40">
                 <Image
-                  src="/home.png"
-                  alt="home logo"
+                  src="/note.png"
+                  alt="contact logo"
                   width={40}
                   height={40}
                 />
