@@ -1,6 +1,13 @@
 // Import the framework and instantiate it
 import Fastify from 'fastify'
 import routes from './routes/routes.js'; // Import your routes
+import fastifyMongodb from 'fastify-mongodb';
+
+
+fastify.register(fastifyMongodb, {
+  forceClose: true,
+  useUnifiedTopology: true,
+});
 
 const fastify = Fastify({
   logger: true

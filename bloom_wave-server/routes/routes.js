@@ -1,9 +1,13 @@
-export default async function routes(fastify, options) {
-  fastify.get('/hello', async (request, reply) => {
-    return { message: 'Hello, from a separate route file!' };
+export default async function routes(fastify, _) {
+  fastify.get('/polution', async (_, reply) => {
+    reply.send( 'polution') ;
   });
 
-  fastify.get('/goodbye', async (request, reply) => {
-    return { message: 'Goodbye, see you soon!' };
+  fastify.get('/fish', async (_, reply) => {
+    reply.send('fish');
+  });
+
+  fastify.get('/courant', async (_, reply) => {
+    reply.send('courant' );
   });
 }
