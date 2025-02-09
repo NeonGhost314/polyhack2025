@@ -16,10 +16,13 @@ import Graticule from "ol/layer/Graticule"; // Import the Graticule layer
 import { ScaleLine } from "ol/control";
 import "ol/ol.css";
 
+
+
 const OpenLayersMap = () => {
   const mapRef = useRef(null);
   const vectorSourceRef = useRef(new VectorSource()); // Source for marker features
   const radiusSourceRef = useRef(new VectorSource()); // Source for radius feature
+  const [menuOpen, setMenuOpen] = useState(false);
   const [rotation, setRotation] = useState(0); // State to track map rotation
 
   useEffect(() => {
@@ -215,8 +218,11 @@ const OpenLayersMap = () => {
             style={{ width: "20px", height: "20px", marginRight: "5px" }}
           />
           <span style={{ color: "black" }}>Marker </span>
+          
         </div>
         {/* Add more legend items as needed */}
+        
+        
       </div>
 
       {/* Toolbar Container */}
@@ -272,6 +278,92 @@ const OpenLayersMap = () => {
           Button 3
         </button>
       </div>
+            {/* Menu Button (Bottom Left) */}
+            <div
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "20px",
+          zIndex: 2,
+        }}
+      >
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{
+            padding: "10px",
+            backgroundColor: "#333",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            fontSize: "16px",
+          }}
+        >
+          ☰ Menu
+        </button>
+
+        {/* Menu Panel */}
+        {menuOpen && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: "50px",
+              left: "0",
+              backgroundColor: "white",
+              padding: "10px",
+              borderRadius: "5px",
+              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+              zIndex: 2,
+              minWidth: "150px",
+            }}
+          >
+            <p style={{ margin: "0", fontWeight: "bold", color: "black" }}>Options</p>
+            <button
+              style={{
+                width: "100%",
+                padding: "8px",
+                margin: "5px 0",
+                backgroundColor: "#007bff",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+            >
+              Option 1
+            </button>
+            <button
+              style={{
+                width: "100%",
+                padding: "8px",
+                margin: "5px 0",
+                backgroundColor: "#28a745",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+            >
+              Option 2
+            </button>
+            <button
+              style={{
+                width: "100%",
+                padding: "8px",
+                margin: "5px 0",
+                backgroundColor: "#dc3545",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+            >
+              Option 3
+            </button>
+          </div>
+        )}
+      </div>
+
     </div>
   );
 };
