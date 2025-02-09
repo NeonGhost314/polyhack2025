@@ -1,9 +1,17 @@
+
 export default async function routes(fastify, options) {
-  fastify.get('/hello', async (request, reply) => {
-    return { message: 'Hello, from a separate route file!' };
+  const db = fastify.mongo.client.db('Informations');
+  const signalCollection = db.collection('signals');
+
+  fastify.get('/signals', async (_, reply) => {
+    const signalCollection = await signalCollection.find().toArray();
+    reply.send(signalCollection);
   });
 
-  fastify.get('/goodbye', async (request, reply) => {
-    return { message: 'Goodbye, see you soon!' };
+  fastify.post('/signals', async (request, reply) => {
+    console.log('okokokokok');
+    const result = await signalCollection.insertOne(request.body);
+    reply.code(201);
+    return { id: result.insertedId };
   });
 }
