@@ -6,10 +6,6 @@ interface MenuProps {
 }
 
 const Menu: React.FC<MenuProps> = ({ isOpen, onToggle }) => {
-    function setMenuOpen(arg0: boolean): void {
-        throw new Error("Function not implemented.");
-    }
-
     return (
         <div
             style={{
@@ -20,7 +16,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onToggle }) => {
             }}
         >
             <button
-                onClick={() => setMenuOpen(!isOpen)}
+                onClick={() => onToggle(!isOpen)}
                 style={{
                     padding: "10px",
                     backgroundColor: "#333",
