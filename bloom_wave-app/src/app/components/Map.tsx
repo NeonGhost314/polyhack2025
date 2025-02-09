@@ -222,6 +222,24 @@ const OpenLayersMap = () => {
         </div>
         {/* Add more legend items as needed */}
         
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
+          <img
+            src="/pollutionSymbol.png"
+            alt="Marker Icon"
+            style={{ width: "20px", height: "20px", marginRight: "5px" }}
+          />
+          <span style={{ color: "black" }}>Marker2 </span>
+          
+        </div>
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
+          <img
+            src="https://openlayers.org/en/latest/examples/data/icon.png"
+            alt="Marker Icon"
+            style={{ width: "20px", height: "20px", marginRight: "5px" }}
+          />
+          <span style={{ color: "black" }}>Marker3 </span>
+          
+        </div>
         
       </div>
 
