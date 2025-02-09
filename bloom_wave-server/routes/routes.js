@@ -1,7 +1,7 @@
 
 export default async function routes(fastify, options) {
-  const db = fastify.mongo.client.db('Informations');
-  const signalCollection = db.collection('signals');
+  const db = await fastify.mongo.client.db('Informations');
+  const signalCollection = await db.collection('signals');
   
   fastify.get('/signals/fish', async (_, reply) => {
     const signalCollectionFish = await signalCollection.find({type:"fish"}).toArray();
@@ -18,8 +18,8 @@ export default async function routes(fastify, options) {
   });
 
   fastify.get('/signals', async (_, reply) => {
-    const signalCollection = await signalCollection.find().toArray();
-    reply.send(signalCollection);
+    const signalCollectionDB = await signalCollection.find().toArray();
+    reply.send(signalCollectionDB);
   });
 
   fastify.post('/signals', async (request, reply) => {
