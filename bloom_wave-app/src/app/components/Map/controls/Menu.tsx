@@ -34,12 +34,13 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onToggle }) => {
         onClick={() => onToggle(!isOpen)}
         style={{
           padding: "10px",
-          backgroundColor: "#333",
-          color: "white",
+          backgroundColor: "rgba(255, 255, 255, 0.55)",
+          color: "black",
           border: "none",
           borderRadius: "5px",
           cursor: "pointer",
           fontSize: "16px",
+          width: "150px",
         }}
       >
         ☰ Menu
@@ -64,7 +65,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onToggle }) => {
               margin: "0",
               fontWeight: "bold",
               color: "black",
-                cursor: "default",
+              cursor: "default",
 
             }}
           >
