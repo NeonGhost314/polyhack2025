@@ -9,12 +9,9 @@ export default function ContactPage() {
         <Image src="/background.png" alt="World map background" fill className="object-cover"/>
       </div>
 
-      <div className="absolute top-0 left-20 m-8 z-40">
-        <a href="/" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Home</a>
-      </div>
-
-      <div className="absolute top-0 left-9 m-7 z-40">
+      <div className="absolute top-0 left-4 m-7 z-40 flex items-center gap-1 text-white font-bold transition-transform duration-300 transform hover:scale-110">
         <Image src="/home.png" alt="home logo" width={40} height={40} className="filter brightness-0 invert"/>
+        <a href="/" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Home</a>
       </div>
 
       <div className="absolute inset-0 bg-black opacity-20 z-10"></div>

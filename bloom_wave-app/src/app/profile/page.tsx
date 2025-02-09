@@ -9,23 +9,17 @@ export default function ProfilePage() {
         <Image src="/background.png" alt="World map background" fill className="object-cover"/>
       </div>
 
-      <div className="absolute top-0 left-20 m-8 z-40">
-        <a href="/" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Home</a>
+      <div className="absolute top-0 left-4 m-7 z-40 flex items-center gap-1 text-white font-bold transition-transform duration-300 transform hover:scale-110">
+        <Image src="/home.png" alt="home logo" width={40} height={40} className="filter brightness-0 invert"/>
+        <a href="/" className="">Home</a>
       </div>
 
-      <div className="absolute top-0 right-0 m-8 z-40">
+      <div className="absolute top-0 right-5 m-7 z-40 flex items-center gap-1 text-white font-bold transition-transform duration-300 transform hover:scale-110">
+        <Image src="/note.png" alt="profile logo" width={40} height={40} className="filter brightness-0 invert"/>
         <a href="/contact" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Contact Us</a>
       </div>
 
       <div className="absolute inset-0 bg-black opacity-20 z-10 "></div>
-
-      <div className="absolute top-0 left-9 m-7 z-40">
-        <Image src="/home.png" alt="home logo" width={40} height={40} className="filter brightness-0 invert"/>
-      </div>
-
-      <div className="absolute top-0 right-20 m-6 z-40">
-        <Image src="/note.png" alt="profile logo" width={40} height={40} className="filter brightness-0 invert"/>
-      </div>
 
       <div className="relative z-30 flex items-center justify-center min-h-screen animate-slideDown">
         <form className="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg max-w-lg w-full mx-4">
