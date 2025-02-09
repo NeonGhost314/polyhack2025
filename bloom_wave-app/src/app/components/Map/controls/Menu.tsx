@@ -1,11 +1,15 @@
 import React from "react";
 
 interface MenuProps {
-    menuOpen: boolean;
-    setMenuOpen: (open: boolean) => void;
+    isOpen: boolean;
+    onToggle: (open: boolean) => void;
 }
 
-const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
+const Menu: React.FC<MenuProps> = ({ isOpen, onToggle }) => {
+    function setMenuOpen(arg0: boolean): void {
+        throw new Error("Function not implemented.");
+    }
+
     return (
         <div
             style={{
@@ -16,7 +20,7 @@ const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
             }}
         >
             <button
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={() => setMenuOpen(!isOpen)}
                 style={{
                     padding: "10px",
                     backgroundColor: "#333",
@@ -30,7 +34,7 @@ const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
                 ☰ Menu
             </button>
 
-            {menuOpen && (
+            {isOpen && (
                 <div
                     style={{
                         position: "absolute",
