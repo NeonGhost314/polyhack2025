@@ -27,3 +27,10 @@ body {
   left: auto;
   right: 8px;
 }
+/* @font-face {
+  font-family: 'WavyFont';
+  src: url('/fonts/WavyFont.woff2') format('woff2'),
+       url('/fonts/WavyFont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */

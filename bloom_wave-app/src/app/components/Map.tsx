@@ -12,6 +12,7 @@ import { Vector as VectorLayer } from "ol/layer";
 import { Vector as VectorSource } from "ol/source";
 import { Style, Icon, Fill, Stroke } from "ol/style";
 import { defaults as defaultControls, Zoom } from "ol/control";
+import Graticule from "ol/layer/Graticule"; // Import the Graticule layer
 import "ol/ol.css";
 
 const OpenLayersMap = () => {
@@ -40,6 +41,15 @@ const OpenLayersMap = () => {
         }),
         new VectorLayer({
           source: radiusSourceRef.current, // Add the vector source for the radius
+        }),
+        new Graticule({
+          // Add the Graticule layer for the grid
+          strokeStyle: new Stroke({
+            color: "rgba(0, 0, 0, 0.2)", // Light gray grid lines
+            width: 1, // Line width
+          }),
+          showLabels: true, // Show labels for meridians and parallels
+          intervals: [10], // Interval between grid lines (in degrees)
         }),
       ],
       view: new View({
@@ -163,9 +173,9 @@ const OpenLayersMap = () => {
         >
           {/* Compass Icon (You can replace this with an SVG or custom icon) */}
           <img
-            src="/path/to/compass-icon.svg" // Replace with your compass icon
+            src="https://cdn.discordapp.com/attachments/555884477809819648/1338006769246404721/1075485_compass_destination_east_north_south_icon.svg?ex=67a98368&is=67a831e8&hm=a0b9450e5bcc412e4f950f872b07d5a0c83e2f874d1208e8884943dda70e900c&" // Replace with your compass icon
             alt="Compass"
-            style={{ width: "24px", height: "24px" }}
+            style={{ width: "70px", height: "70px" }}
           />
         </div>
       </div>
@@ -183,14 +193,14 @@ const OpenLayersMap = () => {
           zIndex: 1, // Ensure the legend is above the map
         }}
       >
-        <h3 style={{ margin: "0 0 10px 0", fontSize: "16px" }}>Legend</h3>
+        <h3 style={{ margin: "0 0 10px 0", fontSize: "16px" ,color: "black"}}>Legend</h3>
         <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
           <img
             src="https://openlayers.org/en/latest/examples/data/icon.png"
             alt="Marker Icon"
             style={{ width: "20px", height: "20px", marginRight: "5px" }}
           />
-          <span>Marker</span>
+          <span style={{color: "black"}}>Marker </span>
         </div>
         {/* Add more legend items as needed */}
       </div>
