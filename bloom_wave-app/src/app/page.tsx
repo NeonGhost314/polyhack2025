@@ -5,20 +5,14 @@ import Image from "next/image";
 export default function HomePage() {
   return (
     <div className="relative min-h-screen">
-      <div className="absolute top-0 left-8 m-7 z-40">
+      <div className="absolute top-0 left-4 m-7 z-40 flex items-center gap-1 text-white font-bold transition-transform duration-300 transform hover:scale-110">
         <Image src="/profile.png" alt="Logo BloomWave" width={50} height={50} className="filter brightness-0 invert"/>
+        <a href="/contact" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Profile</a>
       </div>
 
-      <div className="absolute top-0 right-20 m-6 z-40">
+      <div className="absolute top-0 right-5 m-7 z-40 flex items-center gap-1 text-white font-bold transition-transform duration-300 transform hover:scale-110">
         <Image src="/note.png" alt="contact logo" width={40} height={40} className="filter brightness-0 invert"/>
-      </div>
-
-      <div className="absolute top-0 left-20 m-8 z-40">
-        <a href="/profile" className="text-white font-bold hover:underline">Profile</a>
-      </div>
-      
-      <div className="absolute top-0 right-0 m-8 z-40">
-        <a href="/contact" className="text-white font-bold hover:underline">Contact Us</a>
+        <a href="/profile" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Contact Us</a>
       </div>
 
       <div className="absolute inset-0 z-0">
