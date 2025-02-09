@@ -65,10 +65,38 @@ const OpenLayersMap = () => {
   }, []);
 
   return (
-    <div
-      ref={mapRef}
-      style={{ width: "100%", height: "100vh", border: "2px solid black" }}
-    />
+    <div style={{ position: "relative", width: "100%", height: "100vh" }}>
+      {/* Map Container */}
+      <div
+        ref={mapRef}
+        style={{ width: "100%", height: "100%", border: "2px solid black" }}
+      />
+
+      {/* Legend Container */}
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          backgroundColor: "white",
+          padding: "10px",
+          borderRadius: "5px",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          zIndex: 1, // Ensure the legend is above the map
+        }}
+      >
+        <h3 style={{ margin: "0 0 10px 0", fontSize: "16px" }}>Legend</h3>
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
+          <img
+            src="https://openlayers.org/en/latest/examples/data/icon.png"
+            alt="Marker Icon"
+            style={{ width: "20px", height: "20px", marginRight: "5px" }}
+          />
+          <span>Marker</span>
+        </div>
+        {/* Add more legend items as needed */}
+      </div>
+    </div>
   );
 };
 
