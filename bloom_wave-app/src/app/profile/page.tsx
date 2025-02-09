@@ -14,7 +14,7 @@ export default function ContactPage() {
             />
         </div>
         <div className="absolute top-0 left-20 m-8 z-40">
-            <a href="/main" className="text-white font-bold hover:underline">Home</a>
+            <a href="/" className="text-white font-bold hover:underline">Home</a>
         </div>
         <div className="absolute top-0 right-0 m-8 z-40">
             <a href="/contact" className="text-white font-bold hover:underline">Contact Us</a>
