@@ -72,7 +72,7 @@ const OpenLayersMap = () => {
         ref={mapRef}
         className="w-full h-full border-2 border-black"
       />
-      <Compass rotation={mapState.rotation} />
+      <Compass />
       <Legend />
       <Toolbar 
         isMarkerMode={mapState.isMarkerMode} 
