@@ -3,12 +3,12 @@ import React from "react";
 const Legend = () => {
     const legendItems = [
         {
-            src: "/fishLogo.svg",
+            src: "/fish.png",
             label: "Extinct Fish",
         },
         { src: "/pollutionSymbol.png", label: "Polluted Area" },
         {
-            src: "currentLogo.svg",
+            src: "wave.png",
             label: "Current",
         },
     ];

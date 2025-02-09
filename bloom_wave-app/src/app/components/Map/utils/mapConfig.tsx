@@ -25,8 +25,8 @@ export const createMapLayers = (vectorSource: VectorSource, radiusSource: Vector
 export const createMarkerStyle = () =>
     new Style({
         image: new Icon({
-            src: "https://openlayers.org/en/latest/examples/data/icon.png",
-            scale: 0.5,
+            src: "/fish.png",
+            scale: 0.01,
         }),
     });
 
