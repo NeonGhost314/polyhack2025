@@ -1,24 +1,32 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Map from "ol/Map";
 import View from "ol/View";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import { fromLonLat } from "ol/proj";
-import { Point } from "ol/geom";
+import { Point, Circle } from "ol/geom";
 import { Feature } from "ol";
 import { Vector as VectorLayer } from "ol/layer";
 import { Vector as VectorSource } from "ol/source";
-import { Style, Icon } from "ol/style";
+import { Style, Icon, Fill, Stroke } from "ol/style";
+import { defaults as defaultControls, Zoom } from "ol/control";
 import "ol/ol.css";
 
 const OpenLayersMap = () => {
   const mapRef = useRef(null);
-  const vectorSourceRef = useRef(new VectorSource()); // Source for vector features
+  const vectorSourceRef = useRef(new VectorSource()); // Source for marker features
+  const radiusSourceRef = useRef(new VectorSource()); // Source for radius feature
+  const [rotation, setRotation] = useState(0); // State to track map rotation
 
   useEffect(() => {
     if (!mapRef.current) return;
+
+    // Create custom zoom controls positioned at the bottom-right
+    const zoomControls = new Zoom({
+      className: "ol-zoom-bottom-right", // Custom class for styling
+    });
 
     // Create the map
     const map = new Map({
@@ -28,13 +36,23 @@ const OpenLayersMap = () => {
           source: new OSM(),
         }),
         new VectorLayer({
-          source: vectorSourceRef.current, // Add the vector source to the map
+          source: vectorSourceRef.current, // Add the vector source for markers
+        }),
+        new VectorLayer({
+          source: radiusSourceRef.current, // Add the vector source for the radius
         }),
       ],
       view: new View({
         center: fromLonLat([0, 0]), // Convert lon/lat to EPSG:3857
         zoom: 2,
+        rotation: rotation, // Set initial rotation
       }),
+      controls: defaultControls({ zoom: false }).extend([zoomControls]), // Use custom zoom controls
+    });
+
+    // Listen for map rotation changes
+    map.getView().on("change:rotation", () => {
+      setRotation(map.getView().getRotation()); // Update rotation state
     });
 
     // Add click event listener to the map
@@ -60,6 +78,55 @@ const OpenLayersMap = () => {
       vectorSourceRef.current.addFeature(marker);
     });
 
+    // Add hover effect to markers
+    map.on("pointermove", (event) => {
+      const feature = map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
+
+      // Clear the radius source if no feature is hovered
+      if (!feature) {
+        radiusSourceRef.current.clear();
+        return;
+      }
+
+      // Check if the feature has a geometry
+      const geometry = feature.getGeometry();
+      if (!geometry) {
+        radiusSourceRef.current.clear();
+        return;
+      }
+
+      // Check if the geometry is a Point
+      if (geometry.getType() !== "Point") {
+        radiusSourceRef.current.clear();
+        return;
+      }
+
+      // Get the coordinates of the hovered feature
+      const coordinates = geometry.getCoordinates();
+
+      // Create a circle geometry around the coordinates
+      const radiusFeature = new Feature({
+        geometry: new Circle(coordinates, 100000), // Radius in meters (100 km)
+      });
+
+      // Style the radius
+      radiusFeature.setStyle(
+        new Style({
+          fill: new Fill({
+            color: "rgba(255, 0, 0, 0.2)", // Semi-transparent red
+          }),
+          stroke: new Stroke({
+            color: "rgba(255, 0, 0, 0.8)", // Solid red border
+            width: 2,
+          }),
+        })
+      );
+
+      // Add the radius feature to the radius source
+      radiusSourceRef.current.clear();
+      radiusSourceRef.current.addFeature(radiusFeature);
+    });
+
     // Cleanup on unmount
     return () => map.setTarget(undefined);
   }, []);
@@ -71,6 +138,37 @@ const OpenLayersMap = () => {
         ref={mapRef}
         style={{ width: "100%", height: "100%", border: "2px solid black" }}
       />
+
+      {/* Compass Container */}
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          backgroundColor: "white",
+          padding: "10px",
+          borderRadius: "50%",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          zIndex: 1, // Ensure the compass is above the map
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            transform: `rotate(${rotation}rad)`, // Rotate the compass based on map rotation
+            transition: "transform 0.2s ease", // Smooth rotation animation
+          }}
+        >
+          {/* Compass Icon (You can replace this with an SVG or custom icon) */}
+          <img
+            src="/path/to/compass-icon.svg" // Replace with your compass icon
+            alt="Compass"
+            style={{ width: "24px", height: "24px" }}
+          />
+        </div>
+      </div>
 
       {/* Legend Container */}
       <div

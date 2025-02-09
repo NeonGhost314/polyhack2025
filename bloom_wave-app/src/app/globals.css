@@ -19,3 +19,11 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom CSS for bottom-right zoom controls */
+.ol-zoom-bottom-right {
+  top: auto;
+  bottom: 8px;
+  left: auto;
+  right: 8px;
+}
