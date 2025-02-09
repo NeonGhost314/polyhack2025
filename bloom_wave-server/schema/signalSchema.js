@@ -9,10 +9,9 @@ const Type = Object.freeze({
     pollution:Pollution
   });
 const signalSchema = mongoose.Schema({
-  coordinate:{type:[[]],required:true},
-  size: {type:Number,required:true},
-  type: { type: String, enum: Object.values(Type), required: true },
-  reference: { type: mongoose.Schema.Types.ObjectId, refPath: "type" },
+  coordinate:{type:[[]]},
+  size: {type:Number},
+  type: { type: Type},
 });
 
 export default mongoose.model('Signal', signalSchema);
