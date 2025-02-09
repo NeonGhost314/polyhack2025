@@ -15,6 +15,10 @@ import { defaults as defaultControls, Zoom } from "ol/control";
 import Graticule from "ol/layer/Graticule"; // Import the Graticule layer
 import { ScaleLine } from "ol/control";
 import "ol/ol.css";
+import Compass from "./Compass";
+import Legend from "./Legend";
+import Toolbar from "./Toolbar";
+import Menu from "./controls/Menu";
 
 
 
@@ -149,7 +153,6 @@ const OpenLayersMap = () => {
         })
       );
 
-      // Add the radius feature to the radius source
       radiusSourceRef.current.clear();
       radiusSourceRef.current.addFeature(radiusFeature);
     });
@@ -166,223 +169,14 @@ const OpenLayersMap = () => {
         style={{ width: "100%", height: "100%", border: "2px solid black" }}
       />
 
-      {/* Compass Container */}
-      <div
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          backgroundColor: "white",
-          padding: "10px",
-          borderRadius: "50%",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-          zIndex: 1, // Ensure the compass is above the map
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div
-          style={{
-            transform: `rotate(${rotation}rad)`, // Rotate the compass based on map rotation
-            transition: "transform 0.2s ease", // Smooth rotation animation
-          }}
-        >
-          {/* Compass Icon (You can replace this with an SVG or custom icon) */}
-          <img
-            src="https://cdn.discordapp.com/attachments/555884477809819648/1338006769246404721/1075485_compass_destination_east_north_south_icon.svg?ex=67a98368&is=67a831e8&hm=a0b9450e5bcc412e4f950f872b07d5a0c83e2f874d1208e8884943dda70e900c&" // Replace with your compass icon
-            alt="Compass"
-            style={{ width: "70px", height: "70px" }}
-          />
-        </div>
+      <Compass />
+      <Legend />
+      <Toolbar isMarkerMode={undefined} toggleMarkerMode={undefined} />
+      <Menu menuOpen={false} setMenuOpen={function (open: boolean): void {
+        throw new Error("Function not implemented.");
+      } } />
       </div>
 
-      {/* Legend Container */}
-      <div
-        style={{
-          position: "absolute",
-          top: "10px",
-          right: "10px",
-          backgroundColor: "white",
-          padding: "10px",
-          borderRadius: "5px",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-          zIndex: 1, // Ensure the legend is above the map
-        }}
-      >
-        <h3 style={{ margin: "0 0 10px 0", fontSize: "16px", color: "black" }}>Legend</h3>
-        <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
-          <img
-            src="https://openlayers.org/en/latest/examples/data/icon.png"
-            alt="Marker Icon"
-            style={{ width: "20px", height: "20px", marginRight: "5px" }}
-          />
-          <span style={{ color: "black" }}>Marker </span>
-          
-        </div>
-        {/* Add more legend items as needed */}
-        
-        <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
-          <img
-            src="/pollutionSymbol.png"
-            alt="Marker Icon"
-            style={{ width: "20px", height: "20px", marginRight: "5px" }}
-          />
-          <span style={{ color: "black" }}>Marker2 </span>
-          
-        </div>
-        <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
-          <img
-            src="https://openlayers.org/en/latest/examples/data/icon.png"
-            alt="Marker Icon"
-            style={{ width: "20px", height: "20px", marginRight: "5px" }}
-          />
-          <span style={{ color: "black" }}>Marker3 </span>
-          
-        </div>
-        
-      </div>
-
-      {/* Toolbar Container */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "50%",
-          transform: "translateX(-50%)", // Center the toolbar horizontally
-          backgroundColor: "white",
-          padding: "10px",
-          borderRadius: "5px",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-          zIndex: 1, // Ensure the toolbar is above the map
-          display: "flex",
-          gap: "10px", // Space between buttons
-        }}
-      >
-        <button
-          style={{
-            padding: "8px 16px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-          }}
-        >
-          Button 1
-        </button>
-        <button
-          style={{
-            padding: "8px 16px",
-            backgroundColor: "#28a745",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-          }}
-        >
-          Button 2
-        </button>
-        <button
-          style={{
-            padding: "8px 16px",
-            backgroundColor: "#dc3545",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-          }}
-        >
-          Button 3
-        </button>
-      </div>
-            {/* Menu Button (Bottom Left) */}
-            <div
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "20px",
-          zIndex: 2,
-        }}
-      >
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          style={{
-            padding: "10px",
-            backgroundColor: "#333",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            fontSize: "16px",
-          }}
-        >
-          ☰ Menu
-        </button>
-
-        {/* Menu Panel */}
-        {menuOpen && (
-          <div
-            style={{
-              position: "absolute",
-              bottom: "50px",
-              left: "0",
-              backgroundColor: "white",
-              padding: "10px",
-              borderRadius: "5px",
-              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-              zIndex: 2,
-              minWidth: "150px",
-            }}
-          >
-            <p style={{ margin: "0", fontWeight: "bold", color: "black" }}>Options</p>
-            <button
-              style={{
-                width: "100%",
-                padding: "8px",
-                margin: "5px 0",
-                backgroundColor: "#007bff",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Option 1
-            </button>
-            <button
-              style={{
-                width: "100%",
-                padding: "8px",
-                margin: "5px 0",
-                backgroundColor: "#28a745",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Option 2
-            </button>
-            <button
-              style={{
-                width: "100%",
-                padding: "8px",
-                margin: "5px 0",
-                backgroundColor: "#dc3545",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Option 3
-            </button>
-          </div>
-        )}
-      </div>
-
-    </div>
   );
 };
 
