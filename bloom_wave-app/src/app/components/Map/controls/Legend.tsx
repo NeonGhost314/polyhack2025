@@ -3,13 +3,13 @@ import React from "react";
 const Legend = () => {
     const legendItems = [
         {
-            src: "https://openlayers.org/en/latest/examples/data/icon.png",
+            src: "/fishLogo.svg",
             label: "Marker",
         },
-        { src: "/pollutionSymbol.png", label: "Marker2" },
+        { src: "/pollutionSymbol.png", label: "Zone polluée" },
         {
-            src: "https://openlayers.org/en/latest/examples/data/icon.png",
-            label: "Marker3",
+            src: "currentLogo.svg",
+            label: "Courant maritime",
         },
     ];
     return (
@@ -25,15 +25,16 @@ const Legend = () => {
                 zIndex: 1,
             }}
         >
-            <h3
+            <h2
                 style={{
                     margin: "0 0 10px 0",
                     fontSize: "16px",
                     color: "black",
+                    fontWeight: "bold",
                 }}
             >
-                Legend
-            </h3>
+                LÉGENDE
+            </h2>
             {legendItems.map((item, index) => (
                 <div
                     key={index}
@@ -41,6 +42,7 @@ const Legend = () => {
                         display: "flex",
                         alignItems: "center",
                         marginBottom: "5px",
+                        marginRight: "10px",
                     }}
                 >
                     <img
