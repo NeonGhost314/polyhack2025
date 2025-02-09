@@ -1,74 +1,53 @@
 import React from 'react';
 
-const Toolbar = ({ isMarkerMode, toggleMarkerMode }: { isMarkerMode?: boolean; toggleMarkerMode?: () => void }) => {
+interface ToolbarProps {
+  isMarkerMode: boolean;
+  toggleMarkerMode?: () => void;
+}
+
+const Toolbar: React.FC<ToolbarProps> = ({ isMarkerMode, toggleMarkerMode }) => {
   return (
-    <div
-      style={{
-        position: "absolute",
-        bottom: "20px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        backgroundColor: "white",
-        padding: "10px",
-        borderRadius: "5px",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-        zIndex: 1,
-        display: "flex",
-        gap: "10px",
-      }}
-    >
-      <button
+    <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white p-3 rounded-lg shadow-md z-10 flex gap-4">
+      <div
         onClick={toggleMarkerMode}
-        style={{
-          padding: "8px 16px",
-          backgroundColor: isMarkerMode ? "#0056b3" : "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-          height: "7vh",
-          width: "16vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "5px"
-        }}
+        className={`
+          p-3 rounded-full cursor-pointer transition-all duration-200 ease-in-out
+          flex items-center justify-center
+          ${isMarkerMode ? 'bg-blue-700 hover:bg-blue' : 'bg-blue-500 hover:bg-blue-600'}
+        `}
+        role="button"
+        aria-label={isMarkerMode ? "Cancel marker placement" : "Add marker"}
       >
         <img
-          src="https://openlayers.org/en/latest/examples/data/icon.png"
-          alt="Marker"
-          style={{ width: "20px", height: "20px" }}
+          src="/fishLogo.svg"
+          alt="Add Marker"
+          className="w-10 h-10"
         />
-        {isMarkerMode ? "Cancel" : "Add Marker"}
-      </button>
-      <button
-        style={{
-          padding: "8px 16px",
-          backgroundColor: "#28a745",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-          height: "7vh",
-          width: "16vh"
-        }}
+      </div>
+
+      <div
+        className="p-3 bg-green-500 hover:bg-green-600 rounded-full cursor-pointer transition-all duration-200 ease-in-out"
+        role="button"
+        aria-label="Toggle layers"
       >
-        Button 2
-      </button>
-      <button
-        style={{
-          padding: "8px 16px",
-          backgroundColor: "#dc3545",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-          height: "7vh",
-          width: "16vh"
-        }}
+        <img
+          src="/pollutionSymbol.png"
+          alt="Layers"
+          className="w-10 h-10"
+        />
+      </div>
+
+      <div
+        className="p-3 bg-red-500 hover:bg-red-600 rounded-full cursor-pointer transition-all duration-200 ease-in-out"
+        role="button"
+        aria-label="Delete selected"
       >
-        Button 3
-      </button>
+        <img
+          src="/currentLogo.svg"
+          alt="Delete"
+          className="w-10 h-10"
+        />
+      </div>
     </div>
   );
 };

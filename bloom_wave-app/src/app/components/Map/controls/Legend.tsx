@@ -4,12 +4,12 @@ const Legend = () => {
     const legendItems = [
         {
             src: "/fishLogo.svg",
-            label: "Marker",
+            label: "Extinct Fish",
         },
-        { src: "/pollutionSymbol.png", label: "Zone polluée" },
+        { src: "/pollutionSymbol.png", label: "Polluted Area" },
         {
             src: "currentLogo.svg",
-            label: "Courant maritime",
+            label: "Current",
         },
     ];
     return (
@@ -33,7 +33,7 @@ const Legend = () => {
                     fontWeight: "bold",
                 }}
             >
-                LÉGENDE
+                LEGEND
             </h2>
             {legendItems.map((item, index) => (
                 <div
@@ -60,6 +60,5 @@ const Legend = () => {
         </div>
     );
 };
-
 
 export default Legend;
