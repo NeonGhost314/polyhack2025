@@ -3,7 +3,7 @@ import { Feature, Map } from 'ol';
 import { Point, Circle } from 'ol/geom';
 import { Vector as VectorSource } from 'ol/source';
 import { createMarkerStyle, createRadiusStyle } from '../utils/mapConfig';
-
+import Signal from '../../Signal'
 interface MapInteractionsProps {
   map: Map | null;
   isMarkerMode: boolean;
@@ -71,7 +71,12 @@ export const useMapInteractions = ({
     const handleClick = (event: any) => {
       if (isMarkerMode) {
         addMarker(event.coordinate, vectorSource);
-        console.log(event.coordinate);
+        const coordinates = event.coordinate;  // Get coordinates from map click
+         const type = "pollution";              // This could be dynamic based on user input or map context
+          const description = "Pollution detected in this location"; // Custom message
+        console.log(coordinates);
+        const signal = new Signal(coordinates, type, description);
+        console.log(signal.sendToServer());  // Send the signal to the backend
       }
     };
 
