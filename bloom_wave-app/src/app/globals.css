@@ -46,10 +46,3 @@ body {
   font-size: 12px; /* Adjust if needed */
   text-align: center;
 }
-/* @font-face {
-  font-family: 'WavyFont';
-  src: url('/fonts/WavyFont.woff2') format('woff2'),
-       url('/fonts/WavyFont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-} */
