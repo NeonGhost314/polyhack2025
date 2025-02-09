@@ -18,7 +18,7 @@ const Legend = () => {
                 position: "absolute",
                 top: "10px",
                 right: "10px",
-                backgroundColor: "white",
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
                 padding: "10px",
                 borderRadius: "5px",
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
