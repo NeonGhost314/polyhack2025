@@ -10,11 +10,11 @@ export default function ProfilePage() {
       </div>
 
       <div className="absolute top-0 left-20 m-8 z-40">
-        <a href="/" className="text-white font-bold hover:underline">Home</a>
+        <a href="/" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Home</a>
       </div>
 
       <div className="absolute top-0 right-0 m-8 z-40">
-        <a href="/contact" className="text-white font-bold hover:underline">Contact Us</a>
+        <a href="/contact" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Contact Us</a>
       </div>
 
       <div className="absolute inset-0 bg-black opacity-20 z-10 "></div>

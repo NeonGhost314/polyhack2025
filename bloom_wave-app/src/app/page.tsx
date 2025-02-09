@@ -14,11 +14,11 @@ export default function HomePage() {
       </div>
 
       <div className="absolute top-0 left-20 m-8 z-40">
-        <a href="/profile" className="text-white font-bold hover:underline">Profile</a>
+        <a href="/profile" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Profile</a>
       </div>
       
       <div className="absolute top-0 right-0 m-8 z-40">
-        <a href="/contact" className="text-white font-bold hover:underline">Contact Us</a>
+        <a href="/contact" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Contact Us</a>
       </div>
 
       <div className="absolute inset-0 z-0">

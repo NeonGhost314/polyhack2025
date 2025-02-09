@@ -10,7 +10,7 @@ export default function ContactPage() {
       </div>
 
       <div className="absolute top-0 left-20 m-8 z-40">
-        <a href="/" className="text-white font-bold hover:underline">Home</a>
+        <a href="/" className="inline-block text-white font-bold transition-transform duration-300 transform hover:scale-110">Home</a>
       </div>
 
       <div className="absolute top-0 left-9 m-7 z-40">
