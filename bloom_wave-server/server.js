@@ -1,17 +1,20 @@
 // Import the framework and instantiate it
 import Fastify from 'fastify'
 import routes from './routes/routes.js'; // Import your routes
-import fastifyMongodb from 'fastify-mongodb';
+import fastifyMongo from "@fastify/mongodb";
+import dotenv from "dotenv";
 
-
-fastify.register(fastifyMongodb, {
-  forceClose: true,
-  useUnifiedTopology: true,
-});
+dotenv.config();
 
 const fastify = Fastify({
   logger: true
 })
+
+
+await fastify.register(fastifyMongo, {
+  forceClose: true,
+  url: process.env.MONGO_URI, // MongoDB connection string
+});
 
 fastify.register(routes);
 // Declare a route

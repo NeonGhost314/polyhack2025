@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import {courantSchema} from './courantSchema';
-import {pollutionSchemaSchema} from './pollutionSchemaSchema';
-import {fishSchemaSchema} from './fishSchemaSchema';
+import {courantSchema} from './courantSchema.js';
+import {pollutionSchemaSchema} from './pollutionSchemaSchema.ts';
+import {fishSchemaSchema} from './fishSchemaSchema.ts';
 
 const Type = Object.freeze({
     Fish:   fishSchemaSchema,
@@ -9,9 +9,9 @@ const Type = Object.freeze({
     Pollution: pollutionSchemaSchema
   });
 const pollutionSchema = mongoose.Schema({
-  severity: String,
+  severity: string,
   coordinate:[[]],
-  size: Number,
+  size: number,
   type:Type
 });
 
