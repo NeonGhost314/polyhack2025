@@ -1,4 +1,3 @@
-// useMapInteractions.ts
 import { useEffect, useCallback } from 'react';
 import { Feature, Map } from 'ol';
 import { Point, Circle } from 'ol/geom';

@@ -13,16 +13,14 @@ const fastify = Fastify({
 
 await fastify.register(fastifyMongo, {
   forceClose: true,
-  url: process.env.MONGO_URI, // MongoDB connection string
+  url: process.env.MONGO_URI,
 });
 
 fastify.register(routes);
-// Declare a route
 fastify.get('/', async function handler (request, reply) {
   return { hello: 'world' }
 })
 
-// Run the server!
 try {
   await fastify.listen({ port: 5000 })
 } catch (err) {
