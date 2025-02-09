@@ -23,7 +23,7 @@ const Compass = ({ }) => {
                 }}
             >
                 <img
-                    src="/compass.svg"
+                    src="/compass.png"
                     alt="Compass"
                     style={{ width: "70px", height: "70px" }}
                 />
